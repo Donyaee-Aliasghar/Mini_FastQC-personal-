@@ -23,7 +23,7 @@ RAW_FILE = os.path.join(
 )
 
 # program path.
-# RAW_FILE = os.path.join(current_dir, "..", "data", "*.fq")  # or *.fastq
+# RAW_FILE = os.path.join(current_dir, "..", "data", "*.fq.gz")  # or *.fastq.gz
 # ============================================
 
 # Normalization path.
