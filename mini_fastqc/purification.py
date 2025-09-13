@@ -13,11 +13,19 @@ os.makedirs(output_dir, exist_ok=True)
 output_file = os.path.join(output_dir, "pure_fastq.fastq")
 
 
-def purification(input_file, min_avg_quality=20):
+def purification(input_file, min_avg_quality=20, output_file=None):
     """Main function."""
+    import os
 
     valid_base = set("ACGTN")
     written_count = 0
+    if output_file is None:
+        project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+        output_dir = os.path.join(project_root, "results")
+        os.makedirs(output_dir, exist_ok=True)
+        output_file = os.path.join(output_dir, "pure_fastq.fastq")
+    else:
+        os.makedirs(os.path.dirname(output_file), exist_ok=True)
     with gzip.open(input_file, "rt") as infile, open(output_file, "w", encoding="utf-8") as outfile:
         while True:
             header = infile.readline().strip()

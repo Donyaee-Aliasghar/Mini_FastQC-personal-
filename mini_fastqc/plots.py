@@ -7,21 +7,23 @@ from matplotlib.backends.backend_pdf import PdfPages
 from .utils import gc_content, phred_score
 
 
-def ftcp(csv_file="report.csv", pdf_file="report.pdf"):
+def ftcp(csv_file="report.csv", pdf_file="report.pdf", fastq_file=None):
     """Analysis fastq to csv and pdf."""
-
     import os
 
-    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-    results_dir = os.path.join(project_root, "results")
-    os.makedirs(results_dir, exist_ok=True)
-    csv_file = os.path.join(results_dir, "report.csv")
-    pdf_file = os.path.join(results_dir, "report.pdf")
+    if fastq_file is None:
+        project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+        results_dir = os.path.join(project_root, "results")
+        os.makedirs(results_dir, exist_ok=True)
+        fastq_file = os.path.join(results_dir, "pure_fastq.fastq")
+        if csv_file == "report.csv":
+            csv_file = os.path.join(results_dir, "report.csv")
+        if pdf_file == "report.pdf":
+            pdf_file = os.path.join(results_dir, "report.pdf")
 
     ids, lengths, gc_percents, avg_qualities = [], [], [], []
     record_count = 0
 
-    fastq_file = os.path.join(results_dir, "pure_fastq.fastq")
     with open(fastq_file, "r", encoding="utf-8") as infile:
         while True:
             header = infile.readline().strip()

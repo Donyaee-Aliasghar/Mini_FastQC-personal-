@@ -7,3 +7,4 @@ venv/
 .vscode/
 *.log
 results/
+.pytest_cache
