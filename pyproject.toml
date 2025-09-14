@@ -1,12 +1,14 @@
 [tool.poetry]
 name = "mini-fastqc"
 version = "0.1.0"
-description = ""
+description = "Details in README.md file."
 authors = ["Donyaee-Aliasghar <donyaeealiasghar@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
+pandas = "^2.3.0"
+matplotlib = "^3.10.3"
 
 
 [build-system]
