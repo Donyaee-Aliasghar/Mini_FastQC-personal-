@@ -1,19 +1,36 @@
-<!-- About project -->
-    FASTQ Cleaner & Analyzer
-    This program is a command-line tool (CLI) for cleaning and analyzing FASTQ files.
+# FastQC analyzer
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
+![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 
-    Features:
-    1.Read Cleaning: Removes sequences with invalid characters and reads below a configurable quality threshold.
-    2.Sequence Analysis: Computes read length, GC content, average quality, and per-base Phred scores.
-    3.Professional Outputs:
-        3-1.CSV: Contains detailed information for each read for downstream analysis.
-        3-2.PDF: Visualizations including read length distribution, GC content, and average quality.
-    4.Easy CLI: Run the program from the command line with configurable input/output options.
+## Title 
+A tool for cleaning, parsing, interpreting and analyzing vcf files.
 
-<!-- Initial configuration -->
-    1.Go to the data directory and add complete FASTQ file(.gz).
-    2.Go to the mini_fastqc > pathes.py and add fastq data name to program path part(uncomment this and command my system path codes). 
+## Description
+این پروژه ابزاری ساده و سریع برای بررسی کیفیت و تجزیه‌وتحلیل فایل‌های VCF است که به کاربران کمک می‌کند داده‌های ژنتیکی را پاک‌سازی، تفسیر و تحلیل کنند.
 
-<!-- How to run -->
-    1.GO to directory Mini_FastQC(personal)
-    2.Run > python3 main.py -c(CSV) <name>.csv -p(PDF) <name>.pdf -q(min guality) <...>
+## Installation 
+1.Cloning this project
+2.Go to the project
+```bash
+cd Mini_FastQC
+```
+3.Install the packages
+>⚠️ Make sure you have peotry on your system.
+```python
+poetry install
+```
+
+## Usage
+1.Go to the project
+```bash
+cd Mini_FastQC
+```
+2.Run the following code
+```python
+python3 main.py -c <name>.csv -p <name>.pdf -q <number>
+```
+
+## License
+Free to use 😊
+
