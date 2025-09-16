@@ -12,7 +12,7 @@ from mini_fastqc.plots import ftcp
 parser = argparse.ArgumentParser(description="FASTQ Cleaner & Analyzer: CSV + PDF report")
 parser.add_argument("-c", "--csv", default="report.csv", help="Output CSV file")
 parser.add_argument("-p", "--pdf", default="report.pdf", help="Output PDF file")
-parser.add_argument("-q", "--min_quality", type=float, default=None, help="Minimum average quality to keep read")
+parser.add_argument("-q", "--min_qual", type=float, default=None, help="Min avg qual to keep read")
 
 args = parser.parse_args()
 

@@ -18,6 +18,7 @@ def average_quality(qs):
 
 
 def content_formule(count, sequence):
+    """Content formule."""
     return (count / len(sequence)) * 100
 
 

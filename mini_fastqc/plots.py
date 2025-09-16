@@ -1,15 +1,18 @@
-"""Module for visoalization."""
+"""Module for visualization."""
 
+import os
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_pdf import PdfPages
 
-from .utils import gc_content, phred_score
+
+from .utils import gc_content, base_quality_scores
 
 
-def ftcp(csv_file="report.csv", pdf_file="report.pdf", fastq_file=None):
+def ftcp(csv_file="report.csv", pdf_file="report.pdf"):
     """Analysis fastq to csv and pdf."""
-    import os
+
+    fastq_file = None
 
     if fastq_file is None:
         project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
@@ -30,14 +33,12 @@ def ftcp(csv_file="report.csv", pdf_file="report.pdf", fastq_file=None):
             if not header:
                 break
             sequence = infile.readline().strip()
-            plus = infile.readline().strip()
             quality = infile.readline().strip()
 
             # Calculate.
             ids.append(header)
             lengths.append(len(sequence))
             gc_percents.append(gc_content(sequence))
-            from .utils import base_quality_scores
 
             scores = base_quality_scores(quality)
             avg_qualities.append(sum(scores) / len(scores) if scores else 0)
@@ -48,7 +49,8 @@ def ftcp(csv_file="report.csv", pdf_file="report.pdf", fastq_file=None):
         print("[WARNING] No records found in pure_fastq.fastq. Check input and filters.")
 
     # Create DataFrame.
-    df = pd.DataFrame({"Read_ID": ids, "Length": lengths, "GC_Content": gc_percents, "Average_Quality": avg_qualities})
+    data = {"Read_ID": ids, "Length": lengths, "GC_Content": gc_percents, "Average_Quality": avg_qualities}
+    df = pd.DataFrame(data)
 
     # Save CSV.
     df.to_csv(csv_file, index=False)
@@ -83,4 +85,4 @@ def ftcp(csv_file="report.csv", pdf_file="report.pdf", fastq_file=None):
         pdf.savefig()
         plt.close()
 
-    print(f"PDF file created : ../results/report.pdf")
+    print("PDF file created : ../results/report.pdf")
