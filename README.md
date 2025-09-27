@@ -7,7 +7,7 @@
 A tool for cleaning, parsing, interpreting and analyzing vcf files.
 
 ## Description
-این پروژه ابزاری ساده و سریع برای بررسی کیفیت و تجزیه‌وتحلیل فایل‌های VCF است که به کاربران کمک می‌کند داده‌های ژنتیکی را پاک‌سازی، تفسیر و تحلیل کنند.
+This project is a simple and fast tool for quality checking and analysis of VCF files that helps users clean, interpret, and analyze genetic data.
 
 ## Installation 
 1.Cloning this project
